@@ -12,6 +12,21 @@ services:
     volumes:
       - mongo-data:/data/db
 
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: keycloak
+    ports:
+      - "8081:8080"  # Expose Keycloak on port 8081
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      #DB_VENDOR: H2  # You can change this to your preferred database, like PostgreSQL or MySQL
+    depends_on:
+      - mongo
+    volumes:
+      - ./keycloak/config:/opt/jboss/keycloak/standalone/configuration  # Mount local configuration folder
+    command: start-dev      
+
   wishlist:
     build:
       context: .
@@ -21,8 +36,11 @@ services:
       - "8080:8080"
     environment:
       SPRING_DATA_MONGODB_URI: mongodb://root:example@mongo:27017/wishlist?authSource=admin
+      KEYCLOAK_SERVER_URL: http://keycloak:8080/auth  # URL of Keycloak server
     depends_on:
       - mongo
+      - keycloak
 
 volumes:
   mongo-data:
+  keycloak:

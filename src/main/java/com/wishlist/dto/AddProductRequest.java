@@ -1,24 +1,14 @@
 package com.wishlist.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
+
+@Data
 public class AddProductRequest {
     
+    @NotBlank(message = "customerId é obrigatório")
     private String customerId;
+    @NotBlank(message = "productId é obrigatório")
     private String productId;
 
-    // Getters and setters (required for Jackson to deserialize JSON)
-    public String getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
-    }
-
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
-    }
 }
