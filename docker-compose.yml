@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - mongo-data:/data/db
+
+  wishlist:
+    build:
+      context: .
+      dockerfile: Dockerfile   # Adjust if your Dockerfile is in a different directory
+    container_name: wishlist-app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://root:example@mongo:27017/wishlist?authSource=admin
+    depends_on:
+      - mongo
+
+volumes:
+  mongo-data:
