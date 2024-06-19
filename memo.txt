@@ -1,4 +1,7 @@
-# wishlist
+
+
+Export Keycloaks settings with clients, users, roles, etc...
+./bin/kc.sh export --dir . --realm lab --users realm_file
 
 Keycloak Client Info
 {

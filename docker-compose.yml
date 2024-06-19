@@ -25,7 +25,9 @@ services:
       - mongo
     volumes:
       - ./keycloak/config:/opt/jboss/keycloak/standalone/configuration  # Mount local configuration folder
-    command: start-dev      
+      - ./lab-realm.json:/opt/keycloak/data/import/lab-realm.json
+    #command: start-dev
+    command: ["start-dev", "--import-realm"]
 
   wishlist:
     build:
