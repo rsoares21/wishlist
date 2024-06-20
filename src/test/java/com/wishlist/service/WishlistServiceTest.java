@@ -3,6 +3,8 @@ package com.wishlist.service;
 import com.wishlist.exception.DuplicateProductException;
 import com.wishlist.model.Wishlist;
 import com.wishlist.repository.WishlistRepository;
+import com.wishlist.service.impl.WishlistService;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

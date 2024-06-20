@@ -1,7 +1,8 @@
 package com.wishlist.controller;
 
 import com.wishlist.model.Wishlist;
-import com.wishlist.service.WishlistService;
+import com.wishlist.service.impl.WishlistService;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;

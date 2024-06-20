@@ -21,6 +21,11 @@ public class SecurityConfig {
             .authorizeHttpRequests(authorizeRequests -> 
                 authorizeRequests
                     .requestMatchers(antMatcher("/wishlist/public")).permitAll()  // Permitir acesso público ao endpoint /products/public
+                    .requestMatchers(antMatcher("/swagger-ui.html")).permitAll()  // Permitir acesso público ao endpoint /products/public
+                    .requestMatchers(antMatcher("/swagger-ui/**")).permitAll()  // Permitir acesso público ao endpoint /products/public
+                    .requestMatchers(antMatcher("/v3/api-docs/**")).permitAll()  // Permitir acesso público ao endpoint /products/public
+                    .requestMatchers(antMatcher("/swagger-ui/index.html")).permitAll()  // Permitir acesso público ao endpoint /products/public
+                    .requestMatchers(antMatcher("/swagger-resources/**")).permitAll()  // Permitir acesso público ao endpoint /products/public
                     .anyRequest().authenticated()                                 // Exigir autenticação para todos os outros endpoints
             )
             .oauth2ResourceServer(oauth2 -> 

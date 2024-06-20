@@ -1,54 +1,49 @@
 package com.wishlist.controller;
 
+import com.wishlist.controller.api.IWishlistController;
 import com.wishlist.dto.AddProductRequest;
 import com.wishlist.model.Wishlist;
-import com.wishlist.service.WishlistService;
+import com.wishlist.service.impl.WishlistService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/wishlist")
 
-public class WishlistController {
+public class WishlistController implements IWishlistController {
 
     @Autowired
     private WishlistService wishlistService;
 
-    @PreAuthorize("hasRole('users')")
-    @PostMapping("/{customerId}/add/{productId}")
-    public Wishlist addProduct(@PathVariable String customerId, @PathVariable String productId) {
-        return wishlistService.addProduct(customerId, productId);
+    @Override
+    public ResponseEntity<Wishlist> addProduct(@PathVariable String customerId, @PathVariable String productId) {
+        return ResponseEntity.ok(wishlistService.addProduct(customerId, productId));
     }
 
-    @PreAuthorize("hasRole('vip')")
-    @PostMapping("/add-product")
-    public Wishlist addProduct(@RequestBody AddProductRequest request) {
-        return wishlistService.addProduct(request.getCustomerId(), request.getProductId());
+    @Override
+    public ResponseEntity<Wishlist> addProductRequest(@RequestBody AddProductRequest request) {
+        return ResponseEntity.ok(wishlistService.addProductRequest(request));
     }    
 
-    @PreAuthorize("hasRole('users')")
-    @DeleteMapping("/{customerId}/remove/{productId}")
-    public Wishlist removeProduct(@PathVariable String customerId, @PathVariable String productId) {
-        return wishlistService.removeProduct(customerId, productId);
+    @Override
+    public ResponseEntity<Wishlist> removeProduct(@PathVariable String customerId, @PathVariable String productId) {
+        return ResponseEntity.ok(wishlistService.removeProduct(customerId, productId));
     }
 
-    @PreAuthorize("hasAnyRole('default-roles-lab','users')")
-    @GetMapping("/{customerId}")
-    public Wishlist getWishlist(@PathVariable String customerId) {
-        return wishlistService.getWishlist(customerId);
+    @Override
+    public ResponseEntity<Wishlist> getWishlist(@PathVariable String customerId) {
+        return ResponseEntity.ok(wishlistService.getWishlist(customerId));
     }
 
-    @PreAuthorize("hasRole('users')")
-    @GetMapping("/{customerId}/contains/{productId}")
-    public boolean isProductInWishlist(@PathVariable String customerId, @PathVariable String productId) {
-        return wishlistService.isProductInWishlist(customerId, productId);
+    @Override
+    public ResponseEntity<Boolean> isProductInWishlist(@PathVariable String customerId, @PathVariable String productId) {
+        return ResponseEntity.ok(wishlistService.isProductInWishlist(customerId, productId));
     }
     
-    @GetMapping("/public")
+    @Override
     public ResponseEntity<String> publicApi() {
         return ResponseEntity.status(HttpStatus.OK).body("This is a public message.");
 
