@@ -45,7 +45,6 @@ public class WishlistController implements WishlistApi {
     
     @Override
     public ResponseEntity<String> publicApi() {
-        return ResponseEntity.status(HttpStatus.OK).body("This is a public message.");
-
+        return ResponseEntity.status(HttpStatus.OK).body("Esta é uma API pública");
     }
 }
