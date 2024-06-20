@@ -3,7 +3,7 @@ package com.wishlist.service;
 import com.wishlist.exception.DuplicateProductException;
 import com.wishlist.model.Wishlist;
 import com.wishlist.repository.WishlistRepository;
-import com.wishlist.service.impl.WishlistService;
+import com.wishlist.service.impl.WishlistServiceImpl;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,7 +27,7 @@ public class WishlistServiceTest {
     private WishlistRepository wishlistRepository;
 
     @InjectMocks
-    private WishlistService wishlistService;
+    private WishlistServiceImpl wishlistService;
 
     @BeforeEach
     void setUp() {

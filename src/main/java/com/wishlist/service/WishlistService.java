@@ -3,7 +3,7 @@ package com.wishlist.service;
 import com.wishlist.dto.AddProductRequest;
 import com.wishlist.model.Wishlist;
 
-public interface IWishlistService {
+public interface WishlistService {
 
     Wishlist addProduct(String customerId, String productId);
 

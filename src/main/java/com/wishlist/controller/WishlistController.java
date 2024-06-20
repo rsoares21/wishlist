@@ -1,9 +1,9 @@
 package com.wishlist.controller;
 
-import com.wishlist.controller.api.IWishlistController;
+import com.wishlist.controller.api.WishlistApi;
 import com.wishlist.dto.AddProductRequest;
 import com.wishlist.model.Wishlist;
-import com.wishlist.service.impl.WishlistService;
+import com.wishlist.service.impl.WishlistServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/wishlist")
 
-public class WishlistController implements IWishlistController {
+public class WishlistController implements WishlistApi {
 
     @Autowired
-    private WishlistService wishlistService;
+    private WishlistServiceImpl wishlistService;
 
     @Override
     public ResponseEntity<Wishlist> addProduct(@PathVariable String customerId, @PathVariable String productId) {

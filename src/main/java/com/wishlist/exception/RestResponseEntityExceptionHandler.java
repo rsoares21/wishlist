@@ -21,6 +21,12 @@ public class RestResponseEntityExceptionHandler {
         return buildResponseEntity(apiError);
     }
 
+    @ExceptionHandler(NotTheAccountOwnerException.class)
+    protected ResponseEntity<Object> handleFulllWishlistException(NotTheAccountOwnerException ex) {
+        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage());
+        return buildResponseEntity(apiError);
+    }
+
     @ExceptionHandler(RuntimeException.class)
     protected ResponseEntity<Object> handleRuntimeException(RuntimeException ex) {
         ApiError apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());

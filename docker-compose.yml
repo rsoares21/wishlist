@@ -29,11 +29,34 @@ services:
     #command: start-dev
     command: ["start-dev", "--import-realm"]
 
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.8.1
+    container_name: elasticsearch-ll
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+      - xpack.security.enabled=false
+      - xpack.security.http.ssl.enabled=false
+    ports:
+      - "9200:9200"
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.8.1
+    container_name: kibana-ll
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+
   wishlist:
     build:
       context: .
       dockerfile: Dockerfile   # Adjust if your Dockerfile is in a different directory
-    container_name: wishlist-app
+    container_name: wishlist
     ports:
       - "8080:8080"
     environment:
@@ -42,7 +65,10 @@ services:
     depends_on:
       - mongo
       - keycloak
+      - elasticsearch
 
 volumes:
   mongo-data:
   keycloak:
+  esdata:
+    driver: local

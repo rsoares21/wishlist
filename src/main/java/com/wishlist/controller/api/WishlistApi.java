@@ -10,7 +10,7 @@ import com.wishlist.model.Wishlist;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 
-public interface IWishlistController {
+public interface WishlistApi {
 
     @Operation(summary = "Add product to wishlist by customer and product IDs")
     @PreAuthorize("hasRole('users')")

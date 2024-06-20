@@ -12,7 +12,11 @@ Keycloak Client Info
   "confidential-port": 0
 }
 
+
+WARN
+Swagger UI is not working
+
 TO-DO
 Verificar se o usuário logado é o dono da wishlist em todas as transações;
 Swagger
-Elastic Search
+

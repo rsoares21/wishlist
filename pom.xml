@@ -78,20 +78,20 @@
 			<artifactId>javaee-api</artifactId>
 			<version>8.0.1</version>
 		  </dependency>-->
-		<!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui -->
+
+		<!-- Swagger https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
 			<version>1.8.0</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui -->
+		<!-- Elastic Search -->
 		<dependency>
-			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.8.0</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
 		</dependency>
-	   
+
  </dependencies>
 
 	<build>

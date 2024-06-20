@@ -1,7 +1,8 @@
 package com.wishlist.controller;
 
+import com.wishlist.controller.api.WishlistApi;
 import com.wishlist.model.Wishlist;
-import com.wishlist.service.impl.WishlistService;
+import com.wishlist.service.impl.WishlistServiceImpl;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,14 +19,14 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(WishlistController.class)
+@WebMvcTest(WishlistApi.class)
 public class WishlistControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private WishlistService wishlistService;
+    private WishlistServiceImpl wishlistService;
 
     @BeforeEach
     void setUp() {

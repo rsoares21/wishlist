@@ -11,4 +11,9 @@ public class AddProductRequest {
     @NotBlank(message = "productId é obrigatório")
     private String productId;
 
+    public AddProductRequest(String customerId, String productId) {
+        this.customerId = customerId;
+        this.productId = productId;
+    }
+
 }
