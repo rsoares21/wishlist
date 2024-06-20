@@ -8,63 +8,69 @@
 	},
 	"item": [
 		{
-			"name": "Adicionar Produto na Wishlist",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{access_token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/wishlist/1/add/11",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"wishlist",
-						"1",
-						"add",
-						"11"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "(Body) Adicionar Produto na Wishlist Request Body",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{access_token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"customerId\":\"1\",\r\n    \"productId\":\"20\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
+			"name": "Wishlist Public",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Collection Pre-request Script\r",
+							"\r",
+							"// Define request options\r",
+							"/*\r",
+							"const requestOptions = {\r",
+							"    method: 'POST',\r",
+							"    url: 'http://localhost:8081/realms/lab/protocol/openid-connect/token',\r",
+							"    header: {\r",
+							"        'Content-Type': 'application/x-www-form-urlencoded',\r",
+							"        'Cookie': 'JSESSIONID=3619C41DDFAB14C4A3E9E6E844C0AC8B'\r",
+							"    },\r",
+							"    body: {\r",
+							"        mode: 'urlencoded',\r",
+							"        urlencoded: [\r",
+							"            { key: 'grant_type', value: 'password' },\r",
+							"            { key: 'client_id', value: 'lab-wishilist' },\r",
+							"            { key: 'client_secret', value: 'w22lBPaO48QLUTOV2xSYlWjPFTQO3Wpv' },\r",
+							"            { key: 'username', value: 'testuser' },\r",
+							"            { key: 'password', value: 'abc123' }\r",
+							"        ]\r",
+							"    }\r",
+							"};\r",
+							"\r",
+							"// Make the request to get the access token\r",
+							"pm.sendRequest(requestOptions, function (err, res) {\r",
+							"    if (err) {\r",
+							"        console.error('Error fetching access token:', err);\r",
+							"        return;\r",
+							"    }\r",
+							"\r",
+							"    // Parse response body as JSON\r",
+							"    const jsonData = res.json();\r",
+							"\r",
+							"    // Extract access token from response\r",
+							"    const accessToken = jsonData.access_token; // Adjust based on your actual response structure\r",
+							"\r",
+							"    // Set access token in environment variable\r",
+							"    pm.environment.set('access_token', accessToken);\r",
+							"\r",
+							"    console.log('Access token fetched and set in environment.');\r",
+							"});\r",
+							"*/\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
 					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
 				},
+				"method": "GET",
+				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/wishlist/add-product",
+					"raw": "http://localhost:8080/wishlist/public",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -72,7 +78,7 @@
 					"port": "8080",
 					"path": [
 						"wishlist",
-						"add-product"
+						"public"
 					]
 				}
 			},
@@ -157,6 +163,161 @@
 					"path": [
 						"wishlist",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Wishlist Contains Product",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Collection Pre-request Script\r",
+							"\r",
+							"// Define request options\r",
+							"/*\r",
+							"const requestOptions = {\r",
+							"    method: 'POST',\r",
+							"    url: 'http://localhost:8081/realms/lab/protocol/openid-connect/token',\r",
+							"    header: {\r",
+							"        'Content-Type': 'application/x-www-form-urlencoded',\r",
+							"        'Cookie': 'JSESSIONID=3619C41DDFAB14C4A3E9E6E844C0AC8B'\r",
+							"    },\r",
+							"    body: {\r",
+							"        mode: 'urlencoded',\r",
+							"        urlencoded: [\r",
+							"            { key: 'grant_type', value: 'password' },\r",
+							"            { key: 'client_id', value: 'lab-wishilist' },\r",
+							"            { key: 'client_secret', value: 'w22lBPaO48QLUTOV2xSYlWjPFTQO3Wpv' },\r",
+							"            { key: 'username', value: 'testuser' },\r",
+							"            { key: 'password', value: 'abc123' }\r",
+							"        ]\r",
+							"    }\r",
+							"};\r",
+							"\r",
+							"// Make the request to get the access token\r",
+							"pm.sendRequest(requestOptions, function (err, res) {\r",
+							"    if (err) {\r",
+							"        console.error('Error fetching access token:', err);\r",
+							"        return;\r",
+							"    }\r",
+							"\r",
+							"    // Parse response body as JSON\r",
+							"    const jsonData = res.json();\r",
+							"\r",
+							"    // Extract access token from response\r",
+							"    const accessToken = jsonData.access_token; // Adjust based on your actual response structure\r",
+							"\r",
+							"    // Set access token in environment variable\r",
+							"    pm.environment.set('access_token', accessToken);\r",
+							"\r",
+							"    console.log('Access token fetched and set in environment.');\r",
+							"});\r",
+							"*/\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/wishlist/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"wishlist",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adicionar Produto na Wishlist",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/wishlist/1/add/11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"wishlist",
+						"1",
+						"add",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(Body) Adicionar Produto na Wishlist Request Body",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerId\":\"1\",\r\n    \"productId\":\"20\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/wishlist/add-product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"wishlist",
+						"add-product"
 					]
 				}
 			},
