@@ -68,6 +68,14 @@
       "containerId" : "5e08b849-000b-4bce-9cdc-23ce14ce621d",
       "attributes" : { }
     }, {
+      "id" : "176d026a-af56-424e-9590-27f6619592b5",
+      "name" : "users",
+      "description" : "Wishlist users",
+      "composite" : false,
+      "clientRole" : false,
+      "containerId" : "5e08b849-000b-4bce-9cdc-23ce14ce621d",
+      "attributes" : { }
+    }, {
       "id" : "3befa319-c939-4c92-9fb1-f53709303600",
       "name" : "offline_access",
       "description" : "${role_offline-access}",
@@ -410,7 +418,7 @@
     } ],
     "disableableCredentialTypes" : [ ],
     "requiredActions" : [ ],
-    "realmRoles" : [ "default-roles-lab" ],
+    "realmRoles" : [ "default-roles-lab", "users" ],
     "notBefore" : 0,
     "groups" : [ ]
   } ],
@@ -1238,7 +1246,7 @@
       "subType" : "anonymous",
       "subComponents" : { },
       "config" : {
-        "allowed-protocol-mapper-types" : [ "oidc-usermodel-attribute-mapper", "saml-user-attribute-mapper", "oidc-address-mapper", "oidc-sha256-pairwise-sub-mapper", "oidc-usermodel-property-mapper", "oidc-full-name-mapper", "saml-role-list-mapper", "saml-user-property-mapper" ]
+        "allowed-protocol-mapper-types" : [ "saml-user-property-mapper", "saml-user-attribute-mapper", "oidc-address-mapper", "oidc-sha256-pairwise-sub-mapper", "oidc-full-name-mapper", "saml-role-list-mapper", "oidc-usermodel-attribute-mapper", "oidc-usermodel-property-mapper" ]
       }
     }, {
       "id" : "61405f74-29d8-40cf-9c36-bbb6c7c08e88",
@@ -1298,7 +1306,7 @@
       "subType" : "authenticated",
       "subComponents" : { },
       "config" : {
-        "allowed-protocol-mapper-types" : [ "oidc-address-mapper", "oidc-usermodel-property-mapper", "saml-user-property-mapper", "saml-user-attribute-mapper", "oidc-sha256-pairwise-sub-mapper", "saml-role-list-mapper", "oidc-usermodel-attribute-mapper", "oidc-full-name-mapper" ]
+        "allowed-protocol-mapper-types" : [ "oidc-sha256-pairwise-sub-mapper", "oidc-usermodel-property-mapper", "oidc-address-mapper", "saml-user-attribute-mapper", "saml-role-list-mapper", "oidc-usermodel-attribute-mapper", "saml-user-property-mapper", "oidc-full-name-mapper" ]
       }
     } ],
     "org.keycloak.keys.KeyProvider" : [ {

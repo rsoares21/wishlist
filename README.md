@@ -11,3 +11,6 @@ Keycloak Client Info
   },
   "confidential-port": 0
 }
+
+TO-DO
+Verificar se o usuário logado é o dono da wishlist em todas as transações;
