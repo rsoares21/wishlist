@@ -52,7 +52,7 @@ Por padrão o usuário usado nos testes possui a role "users" e não a vip. Para
 para
 <b>@PreAuthorize("hasRole('users')")</b>
 
-Ou acessando o keycloak (http://localhost:8081 admin/admin) e incluindo a role "vip" no usuário. Não houve tempo hábil para criar um outro usuario com essa role e incluir nos testes.
+Ou acessando o keycloak (http://localhost:8081 admin/admin), criando e incluindo a role "vip" no usuário. Não houve tempo hábil para criar um outro usuario com essa role e incluir nos testes.
 
 
 
