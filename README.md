@@ -20,7 +20,7 @@
 
   Se quiser pular os testes unitários basta adicionar -DskipTests
 
-<b>execute: mvn clean install -DskipTests</b>
+<b>mvn clean install -DskipTests</b>
 
 5 - Executar o projeto Spring Boot wishlist localmente
 
@@ -43,7 +43,12 @@ Use a requisição "Token Keycloak" para obter o token para autenticação nas r
 
 
 
+<br><br>
+<br><br>
+<br><br>
+<br><br>
 
+MEMO:<br><br>
 Keycloak Client Info
 {
   "realm": "lab",
@@ -56,10 +61,7 @@ Keycloak Client Info
   "confidential-port": 0
 }
 
-
-WARN
+<h4>TODO list</h4>
 Swagger UI is not working
-
-TO-DO
 Verificar se o usuário logado é o dono da wishlist em todas as transações;
 Swagger
