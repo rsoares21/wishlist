@@ -35,13 +35,13 @@ Para chamar as APIS, importe os arquivos Wishlist.postman_collection.json e Wish
 Use a requisição "Token Keycloak" para obter o token para autenticação nas requisições. O Token expira em 5 minutos, caso precise, rode novamente para "renovar".
 
 
+<h3>CONFIGURAÇÃO KEYCLOAK</h3>
 
+Não é necessário criar o Client, User e nem a Role para o usuário. O docker compose já importa o ambiente do keycloak com um Realm de testes pré configurado com essas informações.
 
+<h3>KIBANA</h3>
 
-
-
-
-
+Para acessar os logs de inclusão de produtos na wishlist, acesse o Kibana : http://localhost:5601/app/kibana e busque o indice <i>wishlist-add-product</i>
 
 <br><br>
 <br><br>
