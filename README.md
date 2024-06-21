@@ -2,9 +2,9 @@
 
 - CLONANDO E RODANDO O PROJETO COM DOCKER COMPOSE
 
-1 - Clonar o projeto do github https://github.com/rsoares21/wishlist
+1 - Clonar o projeto do github
 
-  execute: git clone https://github.com/rsoares21/wishlist
+<b>git clone https://github.com/rsoares21/wishlist</b>
 
 2 - Entrar na pasta do projeto que fez o download do github
 
