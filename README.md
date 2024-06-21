@@ -75,6 +75,6 @@ Keycloak Client Info
 }
 
 <h4>TODO list</h4>
-Swagger UI is not working
+Swagger UI is not working<br>
 Verificar se o usuário logado é o dono da wishlist em todas as transações;
 Swagger
