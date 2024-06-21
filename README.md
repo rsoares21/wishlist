@@ -1,6 +1,6 @@
-# wishlist
+# WHISHLIST APP
 
-- CLONANDO E RODANDO O PROJETO COM DOCKER COMPOSE
+<h3>CLONANDO E RODANDO O PROJETO COM DOCKER COMPOSE</h3>
 
 1 - Clonar o projeto do github
 
@@ -8,27 +8,27 @@
 
 2 - Entrar na pasta do projeto que fez o download do github
 
-  execute: cd wishlist
+<b>cd wishlist</b>
 
 3 - Subir o container Docker com Mongo, Redis, Keycloak, Elasticsearch e Kibana
 
-  execute: docker compose up -d
+<b>docker compose up -d</b>
 
 4 - Buildar o projeto usando o maven e gerar o arquivo /target/wishlist-0.0.1-SNAPSHOT.war
 
-  execute: mvn clean install 
+<b>mvn clean install</b>
 
   Se quiser pular os testes unitários basta adicionar -DskipTests
 
-  execute: mvn clean install -DskipTests
+<b>execute: mvn clean install -DskipTests</b>
 
 5 - Executar o projeto Spring Boot wishlist localmente
 
-  execute: java -jar ./target/wishlist-0.0.1-SNAPSHOT.war
+<b>java -jar ./target/wishlist-0.0.1-SNAPSHOT.war</b>
 
 
 
-- CONFIGUÇÃO POSTMAN
+<h3>CONFIGURAÇÃO POSTMAN</h3>
 
 Para chamar as APIS, importe os arquivos Wishlist.postman_collection.json e Wishlist.postman_environment.json no Postman.
 
