@@ -1,5 +1,5 @@
-# WHISHLIST APP
-
+<div style="font-color=lime">WHISHLIST APP
+</div>
 <h3>CLONANDO E RODANDO O PROJETO COM DOCKER COMPOSE</h3>
 
 1 - Clonar o projeto do github
@@ -42,6 +42,19 @@ Não é necessário criar o Client, User e nem a Role para o usuário. O docker 
 <h3>KIBANA</h3>
 
 Para acessar os logs de inclusão de produtos na wishlist, acesse o Kibana : http://localhost:5601/app/kibana e busque o indice <i>wishlist-add-product</i>
+
+<h3>OUTRAS INFORMAÇÕES</h3>
+
+As Apis estão protegidas com oauth2 usando o SSO do keycloak. Algumas apis precisam que o usuário tenha a permissão de "vip" ou "users" para serem executadas.
+Por padrão o usuário usado nos testes possui a role "users" e não a vip. Para testar as apis "vips" será necessário alterar o código da classe WishlistApi da seguinte forma :
+
+<b>@PreAuthorize("hasRole('vip')")</b>
+para
+<b>@PreAuthorize("hasRole('users')")</b>
+
+Ou acessando o keycloak e incluindo a role "vip" no usuário. Não houve tempo hábil para criar um outro usuario com essa role e incluir nos testes.
+
+
 
 <br><br>
 <br><br>
