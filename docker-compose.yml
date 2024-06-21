@@ -58,22 +58,6 @@ services:
     ports:
       - "6379:6379"
 
-  wishlist:
-    build:
-      context: .
-      dockerfile: Dockerfile   # Adjust if your Dockerfile is in a different directory
-    container_name: wishlist
-    ports:
-      - "8080:8080"
-    environment:
-      SPRING_DATA_MONGODB_URI: mongodb://root:example@mongo:27017/wishlist?authSource=admin
-      KEYCLOAK_SERVER_URL: http://keycloak:8080/auth  # URL of Keycloak server
-    depends_on:
-      - mongo
-      - keycloak
-      - elasticsearch
-      - redis
-
 volumes:
   mongo-data:
   keycloak:

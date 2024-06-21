@@ -69,10 +69,11 @@ class WishlistServiceImplTest {
     @Test
     void addProduct_ShouldThrowFulllWishlistException_WhenWishlistIsFull() {
         String customerId = "1";
-        String productId = "16";
+        String productId = "21";
         Wishlist wishlist = new Wishlist();
         wishlist.setCustomerId(customerId);
-        wishlist.setProductIds(new ArrayList<>(Arrays.asList("11", "12", "13", "14", "15")));
+        wishlist.setProductIds(new ArrayList<>(Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11",
+                "12", "13", "14", "15", "16", "17", "18", "19", "20")));
 
         when(wishlistRepository.findByCustomerId(customerId)).thenReturn(wishlist);
 
@@ -184,7 +185,6 @@ class WishlistServiceImplTest {
         });
     }
 
-    
     @Test
     public void testRemoveProduct_WishlistNotFound() {
         String customerId = "1";
@@ -212,7 +212,8 @@ class WishlistServiceImplTest {
         String customerId = "1";
         String productId = "55";
 
-        // Mockando o comportamento do repositório para retornar null, simulando produto não encontrado
+        // Mockando o comportamento do repositório para retornar null, simulando produto
+        // não encontrado
         when(wishlistRepository.findByCustomerId(customerId)).thenReturn(null);
 
         // Chama método de serviço
@@ -221,12 +222,12 @@ class WishlistServiceImplTest {
         // Verificando que findByCustomerId foi chamado uma vez
         verify(wishlistRepository, times(1)).findByCustomerId(customerId);
 
-        // Verificando que save nunca foi chamado porque a lista de desejos não foi atualizada
+        // Verificando que save nunca foi chamado porque a lista de desejos não foi
+        // atualizada
         verify(wishlistRepository, never()).save(any());
 
         // Assegurando que updatedWishlist seja null pois o produto não foi encontrado
         assertNull(updatedWishlist);
     }
-    
-    
+
 }
