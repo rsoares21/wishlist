@@ -13,8 +13,6 @@ public class WishlistRequestResponse {
         this.responsePayload = responsePayload;
     }
 
-    // Getters e Setters
-
     public AddProductRequest getRequestPayload() {
         return requestPayload;
     }

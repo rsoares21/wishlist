@@ -6,6 +6,7 @@ import org.apache.http.HttpHost;
 import org.elasticsearch.client.RestClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 import co.elastic.clients.json.jackson.JacksonJsonpMapper;
 
 @Configuration
@@ -20,4 +21,5 @@ public class ElasticsearchConfig {
 
         return new ElasticsearchClient(transport);
     }
+
 }
